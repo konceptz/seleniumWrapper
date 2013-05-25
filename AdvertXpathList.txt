@@ -1,0 +1,19 @@
+*/
+//object/embed
+//div[@id='col_b']/div[2]
+//[@id='ad_module']/object
+//div[@id='col_b']/div[2]/object
+//div[@id='header_ad']/a/
+//div[@id='col_b']/div[2]/object
+//div[@id='col_b']/div[2]/a
+*Vendors
+//div[@id='vendor-main']/div/a
+//div[@id='vendor-main']/div/object
+//div[@id='vendor-directory']/div/div[2]/div/a/
+*E-Commerce Systems
+//div[2]/div/div[2]/div[2]/div/object
+*Resource Library
+//div[@id='header_ad']/a/
+*Shop
+//div[@id='header_ad']/a
+//div[@id='interstitial']/div[2]/div

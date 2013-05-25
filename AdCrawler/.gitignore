@@ -1,0 +1,4 @@
+.DS_Store
+*.pyc
+chromedriver.log
+selenium_crawler.egg-info
