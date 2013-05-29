@@ -1,0 +1,82 @@
+<root>
+	<commands IDE="clickElement" Python="click" />
+	<commands IDE="doubleClickElement" Python="doubleClick" />
+	<commands IDE="dragToAndDropElement" Python="dragAndDropToObject" />
+	<commands IDE="clickAndHoldElement" Python="mouseDown" />
+	<commands IDE="releaseElement" Python="mouseUp" />
+	<commands IDE="setElementText" Python="type" />
+	<!--<commands IDE="setElementSelected" Python="addSelection" /> Duplicate -->
+	<!--<commands IDE="setElementSelected" Python="check" />  Dupe -->
+	<commands IDE="setElementNotSelected" Python="removeSelection" />
+	<commands IDE="setElementSelected" Python="select" />
+	<commands IDE="submitElement" Python="submit" />
+	<!-- <commands IDE="setElementNotSelected" Python="uncheck" /> Dupe -->
+	<commands IDE="close" Python="close" />
+	<commands IDE="goBack" Python="goBack" />
+	<commands IDE="get" Python="open" />
+	<commands IDE="refresh" Python="refresh" />
+	<commands IDE="switchToFrame" Python="selectFrame" />
+	<commands IDE="switchToWindow" Python="selectWindow" />
+	<commands IDE="answerAlert" Python="answerOnNextPrompt" />
+	<commands IDE="dismissAlert" Python="chooseCancelOnNextConfirmation" />
+	<commands IDE="assertBodyText" Python="assertBodyText" />
+	<commands IDE="verifyBodyText" Python="verifyBodyText" />
+	<commands IDE="assertElementPresent" Python="assertElementPresent" />
+	<commands IDE="verifyElementPresent" Python="verifyElementPresent" />
+	<commands IDE="assertPageSource" Python="assertHtmlSource" />
+	<commands IDE="verifyPageSource" Python="verifyHtmlSource" />
+	<commands IDE="assertText" Python="assertText" />
+	<commands IDE="verifyText" Python="verifyText" />
+	<commands IDE="assertTextPresent" Python="assertTextPresent" />
+	<commands IDE="verifyTextPresent" Python="verifyTextPresent" />
+	<commands IDE="assertAlertPresent" Python="assertAlertPresent" />
+	<commands IDE="verifyAlertPresent" Python="verifyAlertPresent" />
+	<!--<commands IDE="assertAlertPresent" Python="assertPromptPresent" />  Duplicate-->
+	<commands IDE="assertAlertText" Python="assertPrompt" />
+	<commands IDE="verifyAlertText" Python="verifyPrompt" />
+	<!--<commands IDE="assertAlertText" Python="assertAlert" /> Duplucate-->
+	<commands IDE="assertCurrentUrl" Python="assertLocation" />
+	<commands IDE="verifyCurrentUrl" Python="verifyLocation" />
+	<commands IDE="assertTitle" Python="assertTitle" />
+	<commands IDE="verifyTitle" Python="verifyTitle" />
+	<commands IDE="assertElementSelected" Python="assertChecked" />
+	<commands IDE="verifyElementSelected" Python="verifyChecked" />
+	<commands IDE="assertElementValue" Python="assertValue" />
+	<commands IDE="verifyElementValue" Python="verifyValue" />
+	<commands IDE="assertCookieByName" Python="assertCookieByName" />
+	<commands IDE="verifyCookieByName" Python="verifyCookieByName" />
+	<commands IDE="assertCookiePresent" Python="assertCookiePresent" />
+	<commands IDE="verifyCookiePresent" Python="verifyCookiePresent" />
+	<commands IDE="waitForBodyText" Python="waitForBodyText" />
+	<commands IDE="waitForElementPresent" Python="waitForElementPresent" />
+	<commands IDE="waitForPageSource" Python="waitForHtmlSource" />
+	<commands IDE="waitForText" Python="waitForText" />
+	<commands IDE="waitForTextPresent" Python="waitForTextPresent" />
+	<commands IDE="waitForAlertPresent" Python="waitForAlertPresent" />
+	<commands IDE="waitForAlertText" Python="waitForPrompt" />
+	<commands IDE="waitForCurrentUrl" Python="waitForLocation" />
+	<commands IDE="waitForTitle" Python="waitForTitle" />
+	<commands IDE="waitForElementSelected" Python="waitForChecked" />
+	<commands IDE="waitForElementValue" Python="waitForValue" />
+	<commands IDE="waitForCookieByName" Python="waitForCookieByName" />
+	<commands IDE="waitForCookiePresent" Python="waitForCookiePresent" />
+	<commands IDE="saveScreenshot" Python="captureEntirePageScreenshot" />
+	<commands IDE="deleteCookie" Python="deleteCookie" />
+	<commands IDE="print" Python="echo" />
+	<commands IDE="pause" Python="pause" />
+	<commands IDE="storeBodyText" Python="storeBodyText" />
+	<commands IDE="storeElementPresent" Python="storeElementPresent" />
+	<commands IDE="storePageSource" Python="storeHtmlSource" />
+	<commands IDE="storeText" Python="storeText" />
+	<commands IDE="storeTextPresent" Python="storeTextPresent" />
+	<commands IDE="storeAlertPresent" Python="storeAlertPresent" />
+	<!--<commands IDE="storeAlertPresent" Python="storePromptPresent" /> dupe -->
+	<commands IDE="storeAlertText" Python="storePrompt" />
+	<!--<commands IDE="storeAlertText" Python="storeAlert" /> Dupe -->
+	<commands IDE="storeCurrentUrl" Python="storeLocation" />
+	<commands IDE="storeTitle" Python="storeTitle" />
+	<commands IDE="storeElementSelected" Python="storeChecked" />
+	<commands IDE="storeElementValue" Python="storeValue" />
+	<commands IDE="storeCookieByName" Python="storeCookieByName" />
+	<commands IDE="storeCookiePresent" Python="storeCookiePresent" />
+</root>

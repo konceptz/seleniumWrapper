@@ -1,0 +1,32 @@
+youtube
+youtube
+open
+/
+clickAndWait
+//ul[@id='guide-channels']/li[2]/a/span/span[2]
+clickAndWait
+//ul[@id='guide-channels']/li[3]/a/span/span[2]/span
+clickAndWait
+//ul[@id='guide-channels']/li[4]/a/span/span[2]/span
+clickAndWait
+css=area[alt="YouTube home"]
+clickAndWait
+css=area[alt="YouTube home"]
+clickAndWait
+//li[@id='guide-subscription-suggestions-section']/div/div/ul/li/a/span/span[2]/span
+clickAndWait
+css=area[alt="YouTube home"]
+click
+id=yt-picker-language-button
+click
+id=yt-picker-language-button
+click
+id=yt-picker-country-button
+click
+id=yt-picker-language-button
+clickAndWait
+xpath=(//button[@name='hl'])[59]
+click
+id=yt-picker-language-button
+clickAndWait
+xpath=(//button[@name='hl'])[9]

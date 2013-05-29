@@ -2,59 +2,85 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
-from lxml import etree as ET
+from bs4 import BeautifulSoup as bs
 import unittest, time, re, sys
 
+BASE = ""
+
+def main():
+    #setUp(file_input)
+    file_input = sys.argv[1]
+    soup = bs(open(file_input))
+    #driver = webdriver.Firefox()
+    #not using chrome or ie right now
+    #driver.implicitly_wait(30)
+    
+    #gets the base address    
+    for link in soup.find_all('link'):
+        base_url = link.get('href')
+    #driver.get(base_url)
+    commandlist = []
+    for string in soup.stripped_strings:
+        commandlist.append(string)
+
+    #gets all the commands to run    
+    toRun(commandlist)
+
+    #code = 'driver.'+commandlist[6]+''
+    #print commandlist[6]
+    """
+    try: 
+        driver.find_element(By.XPATH, commandlist[7])
+        #driver.verifyElementPresent(By.XPATH, commandlist[7])
+        print True
+    except NoSuchElementException, e: print False
+    """
+
+def toRun(commands):
+    converted_run_list = []
+    commandSoup = bs(open("IDE_to_Python.xml"))
+    ide = []
+    py = []
+    xpaths = []
+
+    #remove the first 4 items of list.
+    del co
+
+    #create a list of all commands in IDE and their Python Equivalents
+    for link in commandSoup.find_all('commands'):
+        ide.append(link.get('ide'))
+        py.append(link.get('python'))
+
+    #get a list of converted commands from IDE to Python
+    
+    for torun in commands:
+        if torun in ide:
+            print py[ide.index(torun)]
+
+            converted_run_list.append(py[ide.index(torun)])
+            xpaths.append(py[ide.index(torun) +1])
+
+    #get a list of all the xpaths from commandlist
+    
 
 
-class SeleniumtoWebdriver(unittest.TestCase):
-    def setUp(self):
-        text = getText(raw_input("Filename of test Script:  testYoutube.html"))
-        self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(30)
-        self.base_url = url_variable
-        self.verificationErrors = []
-        self.accept_next_alert = True
+"""
+    full_exec_commands = []
+    for python_commands in converted_run_list:
+        full_exec_commands.append("exec ")
+"""
+"""
+def getBase():
     
-    def getText(filename):
-        file_obj = open(user_filename, 'r')
-        dom = ET.parse(file_obj)
-        build_text_list = ET.XPath("//text()")
-        tests = build_text_list(dom)    
-        return(filter(lambda x: not re.match(r'^\s*$', x), tests))
+def getList():
 
-    def test_seleniumto_webdriver(self):
-        driver = self.driver
-        driver.get(self.base_url + "/")
-        asdgfhaefjklsklafj
-        #loop over commands with xpaths here
+def setUp():
+    soup = bs(open(file_input))
+    driver = webdriver.Firefox()
+    driver.implicitly_wait(30)
+    for link in soup.find_all('link'):
+        base_url = link.get('href')
+    driver.get(base_url)
+""" 
 
-        
-    
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e: return False
-        return True
-    
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException, e: return False
-        return True
-    
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
-    
-    def tearDown(self):
-        self.driver.quit()
-        self.assertEqual([], self.verificationErrors)
-
-if __name__ == "__main__":
-    unittest.main()
+main()
