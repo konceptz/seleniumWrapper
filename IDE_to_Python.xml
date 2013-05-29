@@ -22,7 +22,8 @@
 	<commands IDE="assertBodyText" Python="assertBodyText" />
 	<commands IDE="verifyBodyText" Python="verifyBodyText" />
 	<commands IDE="assertElementPresent" Python="assertElementPresent" />
-	<commands IDE="verifyElementPresent" Python="verifyElementPresent" />
+        <!--<commands IDE="verifyElementPresent" Python="verifyElementPresent" /> -->
+        <commands IDE="verifyElementPresent" Python="verify_element" /> 
 	<commands IDE="assertPageSource" Python="assertHtmlSource" />
 	<commands IDE="verifyPageSource" Python="verifyHtmlSource" />
 	<commands IDE="assertText" Python="assertText" />
