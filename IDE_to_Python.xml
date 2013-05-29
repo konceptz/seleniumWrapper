@@ -3,6 +3,7 @@
 	<commands IDE="doubleClickElement" Python="doubleClick" />
 	<commands IDE="dragToAndDropElement" Python="dragAndDropToObject" />
 	<commands IDE="clickAndHoldElement" Python="mouseDown" />
+	<commands IDE="clickAndWait" Python="find_element" />
 	<commands IDE="releaseElement" Python="mouseUp" />
 	<commands IDE="setElementText" Python="type" />
 	<!--<commands IDE="setElementSelected" Python="addSelection" /> Duplicate -->
@@ -22,8 +23,8 @@
 	<commands IDE="assertBodyText" Python="assertBodyText" />
 	<commands IDE="verifyBodyText" Python="verifyBodyText" />
 	<commands IDE="assertElementPresent" Python="assertElementPresent" />
-        <!--<commands IDE="verifyElementPresent" Python="verifyElementPresent" /> -->
-        <commands IDE="verifyElementPresent" Python="verify_element" /> 
+    <!--<commands IDE="verifyElementPresent" Python="verifyElementPresent" /> -->
+    <commands IDE="verifyElementPresent" Python="find_element" /> 
 	<commands IDE="assertPageSource" Python="assertHtmlSource" />
 	<commands IDE="verifyPageSource" Python="verifyHtmlSource" />
 	<commands IDE="assertText" Python="assertText" />

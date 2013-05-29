@@ -34,19 +34,32 @@ def main():
     for string in soup.stripped_strings:
         commandlist.append(string)
 
+    passed = []
+    failed = []
+    results = []
     # gets all the commands to run
-
+    #driver.find_element(by=By.XPATH, value="//object/embed").click()
+    driver.refresh()
     run_this = toRun(commandlist)
     
     for x in run_this:
         try:
+            driver.implicitly_wait(10)
             print ("executing command : " + x)
             exec(x)
-            print ("found it %s" % x)
-        except: print("failed")
+            results.append('[passed] ' +x)
+            passed.append(x)
+        except: 
+            results.append('[failed] ' + x)
+            failed.append(x)
 
     # code = 'driver.'+commandlist[6]+''
     # print commandlist[6]
+
+    print ('\n\n\n')
+    for x in results:
+        print x
+    #writefile(passed, failed)
 
 def toRun(commands):
     converted_run_list = []
@@ -94,7 +107,13 @@ def toRun(commands):
         if driver_commands in npc:     
             final_commands_to_exec.append('driver.'+converted_run_list[i]+'()')
         else:
-            final_commands_to_exec.append('driver.'+ converted_run_list[i] + '(by=XPATH value=\"' + xpaths[j]+ '\")') 
+            #post click needed.  Let's convert this string into a list like this:
+            #if driver_commands in list_of_post_click_needed:
+            if 'clickAndWait' in driver_commands: 
+                final_commands_to_exec.append('driver.'+ converted_run_list[i] + '(by=By.XPATH, value=\"' + xpaths[j]+ '\").click()') 
+            #still checking against the list for other commands
+            else:
+                final_commands_to_exec.append('driver.'+ converted_run_list[i] + '(by=By.XPATH, value=\"' + xpaths[j]+ '\")') 
             j=j+1
 
         i=i+1
@@ -113,5 +132,26 @@ def getNoParamCommands():
     npc.append('refresh')
     npc.append('close')
     return npc
+"""
+def writefile(passed, failed):
+    E = lxml.builder.ElementMaker()
+    root = E.root
+    Doc = E.Doc
+    FIELD1 = E.status
+    FIELD2 = E.command
+    output = ROOT(FIELD1())
+    for line in passed:
+
+
+
+
+    now = datetime.datetime.now()
+    time_str = str(now.strftime("%Y-%m-%d-%H-%M"))
+    timefilename = "WebDriver-"
+    timefilename+=time_str
+    timefilename = timefilename+'.xml'
+"""
+   
+
 
 main()
