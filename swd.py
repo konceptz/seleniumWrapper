@@ -39,7 +39,7 @@ def main():
     results = []
     # gets all the commands to run
     #driver.find_element(by=By.XPATH, value="//object/embed").click()
-    driver.refresh()
+    #driver.refresh()
     run_this = toRun(commandlist)
     
     for x in run_this:
@@ -103,6 +103,10 @@ def toRun(commands):
     npc = getNoParamCommands()
     i=0
     j=0
+    """
+    This is where we need to decide how to handle incoming commands and translate them.
+    We should check the XML conversion list and enter a method to return a string.
+    """
     for driver_commands in converted_run_list:
         if driver_commands in npc:     
             final_commands_to_exec.append('driver.'+converted_run_list[i]+'()')
