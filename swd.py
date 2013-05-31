@@ -11,18 +11,26 @@ import re
 import sys
 
 BASE = ''
+TARGETS = []
+VALUES = []
+ACTIONS = []
+EXECUTABLES = []
 
 
 def main():
 
-    # setUp(file_input)
+    #Extract pre-converted commands, 
+    parseXmlScript()
+    #init webdriver
+    initWebDriver()
+    #convert the actions into webdriver commands
+    convertActionsToWebDriver()
+    #actually run the executables
+    runExecutables()
+    #output the 
+    fileOutput()
 
-    file_input = sys.argv[1]
-    soup = bs(open(file_input))
-
-    driver = webdriver.Firefox()
-    # not using chrome or ie right now
-    driver.implicitly_wait(30)
+    
 
     # gets the base address
 
@@ -61,23 +69,61 @@ def main():
         print x
     #writefile(passed, failed)
 
+def parseXmlScript():
+    global BASE
+    file_input = sys.argv[1]
+    soup = bs(open(file_input))
+    
+    #extract base directory
+    for link in soup.find_all('link'):
+        #this well formed XML will only have 1 return
+        BASE = link.get('href')
+
+    #extract out targets/values/actions from soup
+    triples(soup)
+
+
+def initWebDriver():
+    #init for firefox at this time
+    driver = webdriver.Firefox()
+    driver.implicitly_wait(30)
+
+def convertActionsToWebDriver():
+    #actually run the executables
+
+def runExecutables():
+    
+def passfileOutput():
+
+
+def triples(soup):
+    global ACTIONS
+    global TARGETS
+    global VALUES
+
+    all_tds = []
+    for string in soup.find_all('td'):
+        all_tds.append(string)
+
+    all_tds.pop(0)
+   
+    while all_tds:
+        commands.append(all_tds.pop(0))
+        TARGETS.append(all_tds.pop(0))
+        actions.append(all_tds.pop(0))
+
 def toRun(commands):
     converted_run_list = []
     commandSoup = bs(open('IDE_to_Python.xml'))
     ide = []
     py = []
-    xpaths = []
+    TARGETS = []
 	
-   # parse the list of commands into a list and remove the first 5
-    commands.pop(0)
-    commands.pop(0)
-    commands.pop(0)
-    commands.pop(0)
-    commands.pop(0)
+    commands = clean_commands(commands)
  
     for x in commands:
 	if '/' in x:
-	   xpaths.append(x)
+	   TARGETS.append(x)
     # create a list of all commands in IDE and their Python Equivalents
 
     for link in commandSoup.find_all('commands'):
@@ -90,37 +136,46 @@ def toRun(commands):
         if torun in ide:
             converted_run_list.append(py[ide.index(torun)])
     
-    #print (len(xpaths))
+    #print (len(TARGETS))
     #print (len(converted_run_list))
     """
-    for x in xpaths:
+    for x in TARGETS:
         print x
     for x in converted_run_list:
         print x
-    # get a list of all the xpaths from commandlist
+    # get a list of all the TARGETS from commandlist
     """
     final_commands_to_exec= []
-    npc = getNoParamCommands()
+    noXpath = getNoParamCommands()
     i=0
     j=0
+    
     """
     This is where we need to decide how to handle incoming commands and translate them.
     We should check the XML conversion list and enter a method to return a string.
     """
     for driver_commands in converted_run_list:
-        if driver_commands in npc:     
+        if driver_commands in noXpath:     
             final_commands_to_exec.append('driver.'+converted_run_list[i]+'()')
         else:
             #post click needed.  Let's convert this string into a list like this:
             #if driver_commands in list_of_post_click_needed:
+
+            #sending our command and xpath to be processed into needed command.
+            final_commands_to_exec.append(convert_commands(converted_run_list[i], TARGETS[j])
+            """
             if 'clickAndWait' in driver_commands: 
-                final_commands_to_exec.append('driver.'+ converted_run_list[i] + '(by=By.XPATH, value=\"' + xpaths[j]+ '\").click()') 
+                final_commands_to_exec.append('driver.'+ converted_run_list[i] + '(by=By.XPATH, value=\"' + TARGETS[j]+ '\").click()') 
             #still checking against the list for other commands
             else:
-                final_commands_to_exec.append('driver.'+ converted_run_list[i] + '(by=By.XPATH, value=\"' + xpaths[j]+ '\")') 
+                final_commands_to_exec.append('driver.'+ converted_run_list[i] + '(by=By.XPATH, value=\"' + TARGETS[j]+ '\")') 
+            """
             j=j+1
 
         i=i+1
+        
+
+
 
     for x in final_commands_to_exec:
         print x
@@ -136,6 +191,20 @@ def getNoParamCommands():
     npc.append('refresh')
     npc.append('close')
     return npc
+
+def clean_commands(commands):
+    #Remove the first 5 items of unneeded commands
+    commands.pop(0)
+    commands.pop(0)
+    commands.pop(0)
+    commands.pop(0)
+    commands.pop(0)
+
+    return commands
+
+
+  
+
 """
 def writefile(passed, failed):
     E = lxml.builder.ElementMaker()
